@@ -1,0 +1,17 @@
+<% @xylotone.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+<% end %>
+
+<%= form_for @xylotone do |f| %>
+
+    <p>
+      <%= f.file_field :original_image %>
+    </p>
+    <!--<p>-->
+      <!--<%= f.label :remote_original_image_url %>-->
+    <!--<br />-->
+      <!--<%= f.text_field :remote_original_image_url %>-->
+    <!--</p>-->
+
+    <p><%= f.submit %></p>
+<% end %>
