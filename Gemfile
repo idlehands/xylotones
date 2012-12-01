@@ -8,6 +8,7 @@ gem 'rails', '3.2.9'
 gem 'sqlite3'
 gem 'mini_magick'
 gem 'carrierwave'
+gem 'fog'
 
 
 # Gems used only for assets and not required
