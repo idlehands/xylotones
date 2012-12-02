@@ -4,7 +4,9 @@ class Xylotone < ActiveRecord::Base
 
   mount_uploader :original_image, OriginalImageUploader
 
-  validates_presence_of :original_image
+  validates :original_image, :dots, :presence => true
+
+  has_many :dots
 
 
   def convert_to_chunky
