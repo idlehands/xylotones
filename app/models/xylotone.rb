@@ -1,16 +1,27 @@
 class Xylotone < ActiveRecord::Base
 
+  include ChunkyPNG::Color
+
   attr_accessible :dot_collection, :original_image
 
   mount_uploader :original_image, OriginalImageUploader
 
-  validates :original_image, :dots, :presence => true
+  validates :original_image, :presence => true
 
   has_many :dots
 
+  #after_create :make_and_save_dots
+
 
   def convert_to_chunky
-    @chunky_data ||= ChunkyPNG::Canvas.from_file Rails.root.join('public', self.image_url)
+    uploader = OriginalImageUploader.new
+
+    image_location = self.original_image
+    logger.info "########################"
+    logger.info image_location.inspect
+    file = uploader.retrieve_from_store!(image_location)
+
+    @chunky_data ||= ChunkyPNG::Canvas.from_file(file)
   end
 
   def find_intensity(pixel_block) #returns a number between 0 and 256 that represents the value of the block passed to it
@@ -59,15 +70,15 @@ class Xylotone < ActiveRecord::Base
     (x...x_pixel_columns).to_a.product((y...y_pixel_rows).to_a)
   end
 
-  def convert_and_save_dots
-    convert_to_chunky
-    create_halftone_data(2)
-    create_dots
+  def make_and_save_dots
+      convert_to_chunky
+      create_halftone_data(2)
+      create_dots
   end
 
   def create_dots
     @halftone_coords.each do |coord|
-      self.dots << Dot.create(xpos: coord[0], ypos: coord[1], size: coord[2], halftone_id: self.id) ####### how do I get it the correct info?
+      self.dots << Dot.create(xcoord: coord[0], ycoord: coord[1], gray: coord[2], halftone_id: self.id) ####### how do I get it the correct info?
     end
   end
 
