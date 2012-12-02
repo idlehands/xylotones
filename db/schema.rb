@@ -11,11 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129054722) do
+ActiveRecord::Schema.define(:version => 20121202050538) do
 
   create_table "xylotones", :force => true do |t|
     t.string   "original_image"
-    t.text     "dot_collection"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

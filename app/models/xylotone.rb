@@ -4,6 +4,9 @@ class Xylotone < ActiveRecord::Base
 
   mount_uploader :original_image, OriginalImageUploader
 
+  validates_presence_of :original_image
+
+
   def convert_to_chunky
     @chunky_data ||= ChunkyPNG::Canvas.from_file Rails.root.join('public', self.image_url)
   end
