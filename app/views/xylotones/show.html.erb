@@ -4,9 +4,7 @@
        width="800px" height="500px" viewBox="0 0 800 500" enable-background="new 0 0 1280 720" xml:space="preserve">
 
 <% @xylotone.dots.each do |dot| %>
-<circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= (dot.gray/60) %>" fill="black" />
-<!--<circle cx\"#{dot.xcoord}\" cy=\"#{dot.ycoord}\" r=\"#{(dot.gray/60)}\" fill=\"black\" />-->
-
+<circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= (dot.gray/100).to_f/50.0 %>" fill="black" />
 <% end %>
 
 </svg>

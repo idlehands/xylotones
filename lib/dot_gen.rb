@@ -8,7 +8,6 @@ module DotGen
     avg_red   = pixel_block.map{|p| ChunkyPNG::Color.r(p)}.inject(&:+) / pixel_block.size
     avg_green = pixel_block.map{|p| ChunkyPNG::Color.g(p)}.inject(&:+) / pixel_block.size
     avg_blue  = pixel_block.map{|p| ChunkyPNG::Color.r(p)}.inject(&:+) / pixel_block.size
-    # puts "#{avg_red} #{avg_green} #{avg_blue}"
     gray = 256 - (0.299 * avg_red + 0.587 * avg_green + 0.114 * avg_blue)
   end
 
@@ -47,10 +46,13 @@ module DotGen
   end
 
   def create_dots
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts "there are #{@halftone_coords.count} dots!"
+    position_shift = (@halftone_coords[1][1] - @halftone_coords[0][1])/2
+    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+    puts position_shift
     @halftone_coords.each do |coord|
-      Dot.create(xcoord: coord[0], ycoord: coord[1], gray: coord[2], xylotone_id: self.id, delete_status: 1) ####### how do I get it the correct info?
+      if (coord[2]/20).floor != 0
+        Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: 1) ####### how do I get it the correct info?
+      end
     end
   end
 
