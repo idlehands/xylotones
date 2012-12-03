@@ -1,10 +1,8 @@
-<!--<%= image_tag @xylotone.original_image.url %>-->
-
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
        width="800px" height="500px" viewBox="0 0 800 500" enable-background="new 0 0 1280 720" xml:space="preserve">
 
 <% @xylotone.dots.each do |dot| %>
 <circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= (dot.gray/100).to_f/50.0 %>" fill="black" />
 <% end %>
-
+<h2 id="show">show deleted</h2><h2 id="hide">hide deleted</h2>
 </svg>
