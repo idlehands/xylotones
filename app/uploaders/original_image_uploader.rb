@@ -2,9 +2,25 @@
 
 class OriginalImageUploader < CarrierWave::Uploader::Base
 
+  #before :store, :remember_cache_id
+  #after :store, :delete_tmp_dir
+
+  # store! nil's the cache_id after it finishes so we need to remember it for deletion
+  #def remember_cache_id(new_file)
+  #  @cache_id_was = cache_id
+  #end
+  #
+  #def delete_tmp_dir(new_file)
+  #  # make sure we don't delete other things accidentally by checking the name pattern
+  #  if @cache_id_was.present? && @cache_id_was =~ /\A[\d]{8}\-[\d]{4}\-[\d]+\-[\d]{4}\z/
+  #    FileUtils.rm_rf(File.join(cache_dir, @cache_id_was))
+  #  end
+  #end
+
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  #include DotGen
 
   # Include the Sprockets helpers for Rails 3.1+ asset pipeline compatibility:
   include Sprockets::Helpers::RailsHelper
@@ -21,6 +37,10 @@ class OriginalImageUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+  end
+
+  def extension_white_list
+    %w(jpg jpeg gif png)
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -44,6 +64,13 @@ class OriginalImageUploader < CarrierWave::Uploader::Base
   # end
   process :resize_to_fit => [500,500]
   process :convert => 'png'
+  #process :make_dots
+  #
+  #def make_dots
+  #  puts "*********************"
+  #  puts self
+  #  #make_and_save_dots
+  #end
 
   #def convert_and_scale
   #  :convert => 'png'
