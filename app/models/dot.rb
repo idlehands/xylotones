@@ -3,7 +3,7 @@ class Dot < ActiveRecord::Base
 
   belongs_to :xylotone
 
-  validates :xcoord, :ycoord, :gray, :delete_status, :presence => :true
+  validates :xcoord, :ycoord, :gray, :delete_status, :xylotone_id, :presence => :true
 
 end
 

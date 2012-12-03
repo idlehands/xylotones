@@ -11,7 +11,9 @@ describe Xylotone do
       @xylo.should have(1).errors_on(:original_image)
     end
 
-    it "has dots" do
+
+    xit "has dots" do
+      # this was disabled because the dots can't be created until after the initial save
       @xylo.should_not be_valid
       @xylo.should have(1).errors_on(:dots)
     end

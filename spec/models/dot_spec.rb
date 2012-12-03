@@ -26,4 +26,9 @@ describe Dot do
     @dot.should have(1).errors_on(:delete_status)
   end
 
+  it "has a xylotone" do
+    @dot.should_not be_valid
+    @dot.should have(1).errors_on(:xylotone_id)
+  end
+
 end

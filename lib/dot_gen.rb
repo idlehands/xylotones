@@ -42,7 +42,7 @@ module DotGen
 
   def make_and_save_dots
     convert_to_chunky
-    create_halftone_data(4)
+    create_halftone_data(2)
     create_dots
   end
 
