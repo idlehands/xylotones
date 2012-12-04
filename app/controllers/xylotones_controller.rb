@@ -17,4 +17,10 @@ class XylotonesController < ApplicationController
   def show
     @xylotone = Xylotone.find(params[:id])
   end
+
+  def update
+    @dots = Dot.find params[:deleted_ids]
+    @dots.each(&:hide)
+    render :json => { :success => true }
+  end
 end

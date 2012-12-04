@@ -11,7 +11,6 @@ class Xylotone < ActiveRecord::Base
   validates :original_image, :presence => true
 
   has_many :dots
-
   #before_create do |xylo|
   #  logger.info xylo.original_image.inspect
   #end
@@ -20,6 +19,10 @@ class Xylotone < ActiveRecord::Base
 
   def make_dots
     make_and_save_dots
+  end
+
+  def shown_dots
+    self.dots.where :delete_status => Dot::SHOWN
   end
 
 end
