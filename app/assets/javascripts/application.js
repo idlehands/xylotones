@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.svg.js
+//= require jquery.svgdom.js
 //= require_tree .
+

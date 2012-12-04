@@ -11,11 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121129054722) do
+ActiveRecord::Schema.define(:version => 20121202064657) do
+
+  create_table "dots", :force => true do |t|
+    t.integer  "xcoord"
+    t.integer  "ycoord"
+    t.integer  "gray"
+    t.binary   "delete_status"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "xylotone_id"
+  end
+
+  add_index "dots", ["xylotone_id"], :name => "xylotone_id_ix"
 
   create_table "xylotones", :force => true do |t|
     t.string   "original_image"
-    t.text     "dot_collection"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

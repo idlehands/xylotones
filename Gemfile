@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
+gem 'chunky_png'
 
 
 # Gems used only for assets and not required
@@ -21,6 +22,19 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'simplecov', :require => false
+
+  platform :ruby_19 do
+    gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
+    gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
+    gem "ruby-debug19"
+  end
+  gem 'quiet_assets'
 end
 
 gem 'jquery-rails'
