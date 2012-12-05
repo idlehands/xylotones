@@ -5,11 +5,12 @@ gem 'rails', '3.2.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 gem 'mini_magick'
 gem 'carrierwave'
 gem 'fog'
 gem 'chunky_png'
+gem 'jquery-rails'
 
 
 # Gems used only for assets and not required
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'simplecov', :require => false
 
+
   platform :ruby_19 do
     gem 'linecache19', :git => 'git://github.com/mark-moseley/linecache'
     gem 'ruby-debug-base19x', '~> 0.11.30.pre4'
@@ -37,7 +39,7 @@ group :development, :test do
   gem 'quiet_assets'
 end
 
-gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -52,4 +54,4 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'debugger'
+gem 'debugger'
