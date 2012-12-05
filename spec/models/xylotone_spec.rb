@@ -18,6 +18,20 @@ describe Xylotone do
       @xylo.should have(1).errors_on(:dots)
     end
 
+    it "has a url" do
+      @xylo.should_not be_valid
+      @xylo.should have(1).errors_on(:url)
+    end
+
+    it "has a unique url" do
+      @xylo2 = Xylotone.new(:url => "test_url")
+      @xylo2.save
+      @xylo.url = "test_url"
+      @xylo.save
+      @xylo.should_not be_valid
+      @xylo.should have(1).errors_on(:url)
+    end
+
 
 
 end

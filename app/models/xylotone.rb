@@ -4,11 +4,12 @@ class Xylotone < ActiveRecord::Base
   include DotGen
 
 
-  attr_accessible :dot_collection, :original_image
+  attr_accessible :original_image, :url
 
   mount_uploader :original_image, OriginalImageUploader
 
-  validates :original_image, :presence => true
+  #validates :url, :original_image, :presence => true
+  #validates_uniqueness_of :url
 
   has_many :dots
   #before_create do |xylo|
