@@ -2,14 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.shown {
+.full {
   fill: black;
 }
 
-.hidden {
+.empty {
   fill: white;
   stroke-width: 0.5;
   stroke: #aaaaaa;
+}
+
+.hidden {
+  display:none;
 }
 
 .viewer {
@@ -20,4 +24,33 @@
 .deleted {
   fill: white;
   stroke: none;
+}
+
+#selection-box {
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  border: 2px solid red;
+  background: transparent;
+  width: 1px;
+  height: 1px;
+  stroke-width: 5px;
+  stroke-color: none;
+  z-index: 2;
+}
+
+#xylo-box {
+  position:relative;
+  cursor:default;
+}
+
+svg{
+  z-index: 1;
+  position: relative;
+  top: 2px;
+}
+
+#buttons {
+  position: relative;
+  z-index: 1;
 }
