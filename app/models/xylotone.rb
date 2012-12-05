@@ -23,7 +23,7 @@ class Xylotone < ActiveRecord::Base
   end
 
   def shown_dots
-    self.dots.where :delete_status => Dot::SHOWN
+    self.dots.shown
   end
 
 end

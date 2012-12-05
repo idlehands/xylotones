@@ -4,7 +4,7 @@ class CreateDots < ActiveRecord::Migration
       t.integer :xcoord
       t.integer :ycoord
       t.integer :gray
-      t.binary :delete_status
+      t.boolean :delete_status
 
       t.timestamps
     end

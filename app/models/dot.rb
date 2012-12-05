@@ -3,16 +3,12 @@ class Dot < ActiveRecord::Base
 
   belongs_to :xylotone
 
-  validates :xcoord, :ycoord, :gray, :delete_status, :xylotone_id, :presence => :true
+  validates :xcoord, :ycoord, :gray, :xylotone_id, :presence => :true
 
-  HIDDEN = 0
-  SHOWN = 1
-
-  scope :shown, where(:delete_status => SHOWN)
-
+  scope :shown, where(:delete_status => false)
 
   def hide
-    self.update_attributes :delete_status => HIDDEN
+    self.update_attributes :delete_status => true
   end
 
 end

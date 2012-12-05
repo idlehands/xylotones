@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20121204173938) do
     t.integer  "xcoord"
     t.integer  "ycoord"
     t.integer  "gray"
-    t.binary   "delete_status"
+    t.boolean  "delete_status"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "xylotone_id"

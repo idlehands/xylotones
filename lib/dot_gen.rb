@@ -51,7 +51,7 @@ module DotGen
     puts position_shift
     @halftone_coords.each do |coord|
       if (coord[2]/20).floor != 0
-        Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: 1) ####### how do I get it the correct info?
+        Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: false) ####### how do I get it the correct info?
       end
     end
   end
