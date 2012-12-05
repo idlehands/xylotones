@@ -59,6 +59,7 @@ var Xylotone = {
      };
   },
 
+
   hideDot: function(){
     if ($(this).hasClass("full")){
       $(this).attr("class", Xylotone.deletedView);
