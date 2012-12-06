@@ -62,17 +62,17 @@ class OriginalImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  process :correct_rotation
   process :resize_to_fit => [500,500]
-  # process :correct_rotation
   process :convert => 'png'
   
-  # def correct_rotation
-  #   manipulate! do |img|
-  #     img.auto_orient!
-  #     img = yield(img) if block_given?
-  #     img
-  #   end
-  # end
+  def correct_rotation
+    manipulate! do |img|
+      img.auto_orient
+      img = yield(img) if block_given?
+      img
+    end
+  end
   #process :make_dots
   #
   #def make_dots
