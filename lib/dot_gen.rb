@@ -1,7 +1,7 @@
 module DotGen
 
   def convert_to_chunky
-    @chunky_data ||= ChunkyPNG::Canvas.from_file(self.original_image.path)
+    @chunky_data ||= ChunkyPNG::Image.from_file(self.original_image.path)
   end
 
   def find_intensity(pixel_block) #returns a number between 0 and 256 that represents the value of the block passed to it
