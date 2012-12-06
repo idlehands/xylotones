@@ -1,18 +1,17 @@
 var Xylotone = {
     deletedView: 'empty',
     selectOn: 0,
-    selectionBox: $('#selection-box'),
 
   init: function() {
      Xylotone.selectionBox= $('#selection-box');
-     $('circle').on('click', this.hideDot);
+     $('circle').on('click', this.toggleDot);
      $('#show').on('click', this.hideDeleted);
      $('#hide').on('click', this.showDeleted);
      $('#xylo-box').on('mousedown', this.startBox);
      $(window).on('mouseup', this.stopBox);
      $('#xylo-box').on('mousemove', this.adjustBox);
-     $('button.save-image').on('click', this.saveImage);
-     $('button.save-image').on('ajax:success', this.deleteDots);
+     $('#save-image').on('click', this.saveImage);
+     $('#save-image').on('ajax:success', this.deleteDots);
    },
 
   startBox: function(event){
@@ -24,8 +23,9 @@ var Xylotone = {
 
   stopBox: function(){
     Xylotone.selectOn = 0;
+		console.log(Xylotone.selectOn);
     Xylotone.selectionBox.addClass("hidden");
-    Xylotone.boxDelete(event)
+    Xylotone.boxDelete()
     Xylotone.selectionBox.css('width', '1px');
     Xylotone.selectionBox.css('height', '1px');
   },
@@ -60,7 +60,7 @@ var Xylotone = {
   },
 
 
-  hideDot: function(){
+  toggleDot: function(){
     if ($(this).hasClass("full")){
       $(this).attr("class", Xylotone.deletedView);
     } else {
@@ -69,12 +69,12 @@ var Xylotone = {
   },
 
   hideDeleted: function(){
-    $('.deleted').attr("class", Xylotone.deletedView);
+    $('.deleted').attr("class", "empty");
     Xylotone.deletedView = "empty";
   },
 
   showDeleted: function(){
-    $('.empty').attr("class", Xylotone.deletedView);
+    $('.empty').attr("class", "deleted");
      Xylotone.deletedView = "deleted";
   },
 
@@ -111,4 +111,4 @@ var Xylotone = {
 
 };
 
-$(document).ready(function(){ Xylotone.init(); });
+$(document).ready(function(){ window.setInterval(Xylotone.init(), 100); });

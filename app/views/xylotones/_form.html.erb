@@ -5,13 +5,8 @@
 <%= form_for @xylotone do |f| %>
 
     <p>
-      <%= f.file_field :original_image %>
-    </p>
-    <!--<p>-->
-      <!--<%= f.label :remote_original_image_url %>-->
-    <!--<br />-->
-      <!--<%= f.text_field :remote_original_image_url %>-->
-    <!--</p>-->
+      <%= f.file_field :original_image, :class => "file-select" %>
 
-    <p><%= f.submit %></p>
+			<%= f.submit(:class => "upload-button") %>
+		</p>
 <% end %>

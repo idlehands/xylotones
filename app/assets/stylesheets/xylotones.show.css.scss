@@ -1,0 +1,190 @@
+// Place all the styles related to the xylotones controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.full {
+  fill: black;
+}
+
+.empty {
+  fill: white;
+  stroke-width: 0.5;
+  stroke: #aaaaaa;
+}
+
+.hidden {
+  display:none;
+}
+
+.viewer {
+  height: 100%;
+  width: 100%;
+}
+
+.deleted {
+  fill: white;
+  stroke: none;
+}
+
+#selection-box {
+  position: absolute;
+  top: 30px;
+  left: 200px;
+  border: 2px solid red;
+  background: transparent;
+  width: 1px;
+  height: 1px;
+  stroke-width: 5px;
+  stroke-color: none;
+  z-index: 2;
+}
+
+#xylo-box {
+  position:relative;
+  cursor:default;
+	height : 500px;
+	left : 164px;
+	overflow : hidden;
+	position : absolute;
+	top : 180px;
+	width : 800px;
+	background-color : none;
+	border-color : #878787;
+	border-style : solid;
+	border-width : 0px;
+}
+
+svg{
+  z-index: 1;
+  position: relative;
+  top: 2px;
+}
+
+/*#buttons {
+  position: relative;
+  z-index: 1;
+}*/
+
+#header
+{
+	height : 160px;
+	left : 4px;
+	overflow : hidden;
+	position : absolute;
+	top : 10px;
+	width : 792px;
+	background-color : none;
+	border-color : #878787;
+	border-style : solid;
+	border-width : 1px;
+	border-radius: 5px;
+
+}
+
+#div_40
+{
+	height : 160px;
+	left : 804px;
+	overflow : hidden;
+	position : absolute;
+	top : 10px;
+	width : 152px;
+	background-color : none;
+	border-color : #878787;
+	border-style : solid;
+	border-width : 0px;
+
+}
+
+#div_41
+{
+	height : 390px;
+	left : 4px;
+	overflow : hidden;
+	position : absolute;
+	top : 180px;
+	width : 152px;
+	background-color : none;
+	border-color : #878787;
+	border-style : solid;
+	border-width : 0px;
+
+}
+
+#save-image
+{
+	height : 40px;
+	left : 26px;
+	overflow : hidden;
+	position : absolute;
+	top : 10px;
+	width : 100px;
+	-khtml-border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	background-color : #575756;
+	border-radius : 5px;
+	color : #ffffff;
+	font-family : Arial,sans-serif;
+	font-size : 14px;
+	padding : 0;
+
+}
+
+#hide
+{
+	height : 40px;
+	left : 26px;
+	overflow : hidden;
+	position : absolute;
+	top : 70px;
+	width : 100px;
+	-khtml-border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	background-color : #575756;
+	border-radius : 5px;
+	color : #ffffff;
+	font-family : Arial,sans-serif;
+	font-size : 14px;
+	padding : 0;
+
+}
+
+#show
+{
+	height : 40px;
+	left : 26px;
+	overflow : hidden;
+	position : absolute;
+	top : 130px;
+	width : 100px;
+	-khtml-border-radius : 5px;
+	-moz-border-radius : 5px;
+	-webkit-border-radius : 5px;
+	background-color : #575756;
+	border-radius : 5px;
+	color : #ffffff;
+	font-family : Arial,sans-serif;
+	font-size : 14px;
+	padding : 0;
+
+}
+
+
+#div_46
+{
+	height : 130px;
+	left : 4px;
+	overflow : hidden;
+	position : absolute;
+	top : 690px;
+	width : 952px;
+	background-color : none;
+	border-color : #878787;
+	border-style : solid;
+	border-width : 0px;
+
+}
+
+
