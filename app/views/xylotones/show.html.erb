@@ -1,32 +1,38 @@
-<div id="xylo-box">
-	<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
-	       width="800px" height="500px" viewBox="0 0 800 500" enable-background="new 0 0 1280 720" xml:space="preserve" id="view-area" z-index="1">
-
-	  <% @xylotone.shown_dots.each do |dot| %>
-	    <circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= (dot.gray/100).to_f/50.0 %>" 								class='full' data-id="<%= dot.id %>"/>
-	  <% end %>
-	</svg>
-	<div id="selection-box" class="hidden"></div>
-</div>
-<div id="div_41">
-<button type='button' id="show">show deleted</button></br>
-<button type='button' id="hide">hide deleted</button></br>
-<button href="<%= xylotone_path(@xylotone)%>" method="put" id="save-image" data-image-id="<%= @xylotone.id %>">Save</button>
+<div class="row">
+	<div class="span8 offset1">
+		<h2>Xylotone maker - alpha</h2>
+		<p>
+			Click on the dots to remove them. </br>
+			If you're not on mobile, you can drag to the lower right to mass select.
+		</p>
+	</div>
+	<div class="span2 offset1">
+		<%=image_tag 'logo.png', {:id => "logo"} %>
+	</div>
 </div>
 
 
-<div id="header">
-	<h2>Xylotone maker - alpha</h2>
-	<p>
-		Click on the dots to remove them. </br>
-		If you're not on mobile, you can drag to the lower right to mass select.
-	</p>
-</div>
-<div id="div_3">
-	<%=image_tag 'logo.png', {:id => "logo"} %>
+<div class="row">
+	
+	<div class="span2 offset1">
+		<button type='button' id="show">show deleted</button></br>
+		<button type='button' id="hide">hide deleted</button></br>
+		<button href="<%= xylotone_path(@xylotone)%>" method="put" id="save-image" data-image-id="<%= @xylotone.id %>">Save</button>
+	</div>
+	
+	<div class="span8" id="xylo-box">
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+		       width="640px" height="480px" viewBox="0 0 640 480" xml:space="preserve" id="view-area" z-index="1">
+
+		  <% @xylotone.shown_dots.each do |dot| %>
+		    <circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= [(dot.gray/100).to_f/50.0, 4].min %>" 								class='full' data-id="<%= dot.id %>"/>
+		  <% end %>
+		</svg>
+		<div id="selection-box" class="hidden"></div>
+	</div>
+	
 </div>
 
-<div id="div_45">
-</div>
-<div id="div_46">
-</div>
+
+
+
