@@ -25,7 +25,7 @@
 		       width="640px" height="480px" viewBox="0 0 640 480" xml:space="preserve" id="view-area" z-index="1">
 
 		  <% @xylotone.shown_dots.each do |dot| %>
-		    <circle cx="<%= dot.xcoord%>" cy="<%= dot.ycoord %>" r="<%= [(dot.gray/100).to_f/50.0, 4].min %>" 								class='full' data-id="<%= dot.id %>"/>
+		    <circle cx="<%= dot.xcoord * 9 + 5 %>" cy="<%= dot.ycoord * 9 + 5%>" r="<%= [(dot.gray/100).to_f/50.0, 4].min %>" 								class='full' data-id="<%= dot.id %>"/>
 		  <% end %>
 		</svg>
 		<div id="selection-box" class="hidden"></div>

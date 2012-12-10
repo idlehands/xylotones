@@ -63,7 +63,7 @@ class OriginalImageUploader < CarrierWave::Uploader::Base
   #   process :scale => [50, 50]
   # end
   process :correct_rotation
-  process :resize_to_fit => [500,500]
+  process :resize_to_fit => [55,55]
   process :convert => 'png'
   
   def correct_rotation
