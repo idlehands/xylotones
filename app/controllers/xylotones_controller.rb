@@ -1,3 +1,5 @@
+require 'csv'
+
 class XylotonesController < ApplicationController
   def new
     @xylotone = Xylotone.new
@@ -16,6 +18,16 @@ class XylotonesController < ApplicationController
 
   def show
     @xylotone = Xylotone.find(params[:id])
+    @dots = []
+    CSV.foreach(File.join(Rails.public_path, "bob.csv"), 'r') do |row|
+      dot = []
+      row.each do |string|
+        dot << string.to_i
+      end
+      @dots << dot
+    end
+    puts "HEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEY"
+    puts @dots.inspect
   end
 
   def update

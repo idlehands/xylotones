@@ -24,8 +24,8 @@
 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
 		       width="640px" height="480px" viewBox="0 0 640 480" xml:space="preserve" id="view-area" z-index="1">
 
-		  <% @xylotone.shown_dots.each do |dot| %>
-		    <circle cx="<%= dot.xcoord * 9 + 5 %>" cy="<%= dot.ycoord * 9 + 5%>" r="<%= [(dot.gray/100).to_f/50.0, 4].min %>" 								class='full' data-id="<%= dot.id %>"/>
+		  <% @dots.each do |dot| %>
+		    <circle cx="<%= dot[1] * 9 + 5 %>" cy="<%= dot[2] * 9 + 5%>" r="<%= [(dot[3]/100).to_f/50.0, 4].min %>" class='full' data-id="<%= dot[0] %>"/>
 		  <% end %>
 		</svg>
 		<div id="selection-box" class="hidden"></div>

@@ -1,3 +1,5 @@
+require 'csv'
+
 module DotGen
 
   def convert_to_chunky
@@ -16,8 +18,10 @@ module DotGen
     rows1 = @chunky_data.height/dot_spacing
     pixel_positions = (0...columns1).to_a.product((0...rows1).to_a)
 
+    dot_index = 0
     pixel_positions.each do |x,y|
-      halftone_coords << [x, y, find_intensity(x, y)]
+      halftone_coords << [dot_index, x, y, (find_intensity(x, y) * 100).to_i]
+      dot_index += 1
     end
     @halftone_coords = halftone_coords
   end
@@ -29,14 +33,19 @@ module DotGen
   end
 
   def create_dots
-    position_shift = (@halftone_coords[1][1] - @halftone_coords[0][1])/2
-    puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-    puts position_shift
-    @halftone_coords.each do |coord|
-      if (coord[2]/20).floor != 0
-        Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: false) ####### how do I get it the correct info?
+    #position_shift = (@halftone_coords[1][1] - @halftone_coords[0][1])/2
+    CSV.open(File.join(Rails.public_path,"bob.csv"), 'w') do |csv|
+      @halftone_coords.each do |dot|
+        csv << dot
       end
     end
+
+
+    #@halftone_coords.each do |coord|
+      #if (coord[2]/20).floor != 0
+      #  Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: false)
+      #end
+    #end
   end
 
 end
