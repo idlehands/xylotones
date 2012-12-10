@@ -13,7 +13,7 @@ module DotGen
 
   def create_halftone_data(block_percent)
     halftone_coords = []
-    dot_spacing = (@chunky_data.width/100*block_percent).floor
+    dot_spacing = 9 #(@chunky_data.width/100*block_percent).floor
     columns1 = @chunky_data.width/dot_spacing
     columns2 = columns1 - 2
     rows1 = @chunky_data.height/dot_spacing
