@@ -1,4 +1,5 @@
 require 'csv'
+require 'net/http'
 
 class XylotonesController < ApplicationController
   def new
@@ -6,9 +7,8 @@ class XylotonesController < ApplicationController
   end
 
   def create
-    logger.info "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    logger.info params.inspect
     @xylotone = Xylotone.new(params[:xylotone])
+    puts @xylotone.inspect
     if @xylotone.save
       redirect_to xylotone_path(@xylotone.id)
     else
@@ -19,15 +19,15 @@ class XylotonesController < ApplicationController
   def show
     @xylotone = Xylotone.find(params[:id])
     @dots = []
-    CSV.foreach(File.join(Rails.public_path, "bob.csv"), 'r') do |row|
+    bob = @xylotone.dot_file
+    CSV.foreach(bob, 'r') do |row|
       dot = []
+      puts row
       row.each do |string|
         dot << string.to_i
       end
-      @dots << dot
+    @dots << dot
     end
-    puts "HEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEYHEY"
-    puts @dots.inspect
   end
 
   def update

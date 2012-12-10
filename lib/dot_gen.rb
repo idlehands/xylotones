@@ -33,19 +33,20 @@ module DotGen
   end
 
   def create_dots
-    #position_shift = (@halftone_coords[1][1] - @halftone_coords[0][1])/2
-    CSV.open(File.join(Rails.public_path,"bob.csv"), 'w') do |csv|
+    puts "lkdjf;alkjdf;lakjsdf;lkajdf;lkja;ldfkj;alskdjf;alksjdf;laksjdf;lajksdf"
+    puts self.inspect
+    file_name = File.join(Rails.public_path,"temp#{rand(1000000)}.xyl")
+    CSV.open(file_name, 'w') do |csv|
       @halftone_coords.each do |dot|
         csv << dot
       end
     end
-
-
-    #@halftone_coords.each do |coord|
-      #if (coord[2]/20).floor != 0
-      #  Dot.create(xcoord: (coord[0] + position_shift), ycoord: (coord[1] + position_shift), gray: (coord[2]*100), xylotone_id: self.id, delete_status: false)
-      #end
-    #end
+    self.dot_file = File.open(file_name)
+    puts "I got past the assignment"
+    puts self.inspect
+    self.save
+    #File.delete(file_name)
+    self
   end
 
 end
