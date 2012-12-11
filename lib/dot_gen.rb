@@ -35,7 +35,7 @@ module DotGen
   def create_dots
     puts "lkdjf;alkjdf;lakjsdf;lkajdf;lkja;ldfkj;alskdjf;alksjdf;laksjdf;lajksdf"
     puts self.inspect
-    file_name = File.join(Rails.public_path,"temp#{rand(1000000)}.xyl")
+    file_name = File.join(Rails.public_path,"temp#{rand(1000000)}.csv")
     CSV.open(file_name, 'w') do |csv|
       @halftone_coords.each do |dot|
         csv << dot

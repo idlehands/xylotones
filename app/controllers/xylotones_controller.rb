@@ -1,5 +1,6 @@
 require 'csv'
 require 'net/http'
+require 'open-uri'
 
 class XylotonesController < ApplicationController
   def new
@@ -19,8 +20,8 @@ class XylotonesController < ApplicationController
   def show
     @xylotone = Xylotone.find(params[:id])
     @dots = []
-    bob = @xylotone.dot_file
-    CSV.foreach(bob, 'r') do |row|
+    data = open(@xylotone.dot_file.url.to_s,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+    CSV.foreach(data, 'r') do |row|
       dot = []
       puts row
       row.each do |string|
