@@ -20,7 +20,7 @@ class XylotonesController < ApplicationController
   def show
     @xylotone = Xylotone.find(params[:id])
     @dots = []
-    data = open(@xylotone.dot_file.url.to_s,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+    data = open(@xylotone.dot_file.url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
     CSV.foreach(data, 'r') do |row|
       dot = []
       puts row
