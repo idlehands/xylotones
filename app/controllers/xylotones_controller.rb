@@ -1,12 +1,15 @@
+require 'csv'
+require 'net/http'
+require 'open-uri'
+
 class XylotonesController < ApplicationController
   def new
     @xylotone = Xylotone.new
   end
 
   def create
-    logger.info "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    logger.info params.inspect
     @xylotone = Xylotone.new(params[:xylotone])
+    puts @xylotone.inspect
     if @xylotone.save
       redirect_to xylotone_path(@xylotone.id)
     else
@@ -16,6 +19,16 @@ class XylotonesController < ApplicationController
 
   def show
     @xylotone = Xylotone.find(params[:id])
+    @dots = []
+    data = open(@xylotone.dot_file.url.to_s,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
+    CSV.foreach(data, 'r') do |row|
+      dot = []
+      puts row
+      row.each do |string|
+        dot << string.to_i
+      end
+    @dots << dot
+    end
   end
 
   def update

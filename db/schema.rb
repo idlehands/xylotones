@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204173938) do
+ActiveRecord::Schema.define(:version => 20121210053549) do
 
   create_table "dots", :force => true do |t|
     t.integer  "xcoord"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121204173938) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.string   "url"
+    t.string   "dot_file"
   end
 
 end
