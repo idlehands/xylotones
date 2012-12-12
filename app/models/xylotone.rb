@@ -13,9 +13,6 @@ class Xylotone < ActiveRecord::Base
   #validates_uniqueness_of :url
 
   has_many :dots
-  #before_create do |xylo|
-  #  logger.info xylo.original_image.inspect
-  #end
 
   #before_create :
   after_create :make_dots

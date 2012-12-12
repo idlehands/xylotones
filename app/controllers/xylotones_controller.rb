@@ -3,13 +3,14 @@ require 'net/http'
 require 'open-uri'
 
 class XylotonesController < ApplicationController
+  include DotGen
+
   def new
     @xylotone = Xylotone.new
   end
 
   def create
     @xylotone = Xylotone.new(params[:xylotone])
-    puts @xylotone.inspect
     if @xylotone.save
       redirect_to xylotone_path(@xylotone.id)
     else
@@ -23,17 +24,21 @@ class XylotonesController < ApplicationController
     data = open(@xylotone.dot_file.url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
     CSV.foreach(data, 'r') do |row|
       dot = []
-      puts row
-      row.each do |string|
-        dot << string.to_i
+      (0..3).each do |index|
+        dot << row[index].to_i
       end
-    @dots << dot
+      dot << row[4]
+      puts dot.inspect
+      if dot[4] == "false"
+        @dots << dot
+      end
     end
   end
 
   def update
-    @dots = Dot.find params[:deleted_ids]
-    @dots.each(&:hide)
+    deleted_dot_ids = params[:deleted_ids].map(&:to_i)
+    puts deleted_dot_ids.inspect
+    delete_dots(deleted_dot_ids, params[:id])
     render :json => { :success => true }
   end
 end
