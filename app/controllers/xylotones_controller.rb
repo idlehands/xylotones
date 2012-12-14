@@ -18,7 +18,7 @@ class XylotonesController < ApplicationController
     end
   end
 
-  def show
+  def show #Get this in the dot_gen module!!!!
     @xylotone = Xylotone.find(params[:id])
     @dots = []
     data = open(@xylotone.dot_file.url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
@@ -37,7 +37,6 @@ class XylotonesController < ApplicationController
 
   def update
     deleted_dot_ids = params[:deleted_ids].map(&:to_i)
-    puts deleted_dot_ids.inspect
     delete_dots(deleted_dot_ids, params[:id])
     render :json => { :success => true }
   end
