@@ -1,6 +1,6 @@
 require 'csv'
 
-module DotGen
+module DotGen #switch from csv to json!
 
   def convert_to_chunky
     @chunky_data ||= ChunkyPNG::Image.from_file(self.original_image.path)
