@@ -18,26 +18,16 @@ class XylotonesController < ApplicationController
     end
   end
 
-  def show #Get this in the dot_gen module!!!!
+  def show
     @xylotone = Xylotone.find(params[:id])
-    @dots = []
-    data = open(@xylotone.dot_file.url,:ssl_verify_mode => OpenSSL::SSL::VERIFY_NONE)
-    CSV.foreach(data, 'r') do |row|
-      dot = []
-      (0..3).each do |index|
-        dot << row[index].to_i
-      end
-      dot << row[4]
-      puts dot.inspect
-      if dot[4] == "false"
-        @dots << dot
-      end
-    end
+    @dots = dots_from_url(@xylotone.dot_file.url)
+    # @dots = JSON.parse(data)
   end
 
   def update
+    xylotone = Xylotone.find(params[:id])
     deleted_dot_ids = params[:deleted_ids].map(&:to_i)
-    delete_dots(deleted_dot_ids, params[:id])
+    delete_dots(deleted_dot_ids, xylotone)
     render :json => { :success => true }
   end
 end

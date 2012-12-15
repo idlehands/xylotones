@@ -18,7 +18,7 @@ class Xylotone < ActiveRecord::Base
   after_create :make_dots
 
   def make_dots
-    make_and_save_dots
+    make_and_save_dots(self, self.original_image.path)
   end
 
   def shown_dots
