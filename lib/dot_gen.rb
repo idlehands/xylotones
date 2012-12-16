@@ -6,16 +6,8 @@ module DotGen
 
   def gray_value(x,y) 
     pixel = @chunky_image.get_pixel(x,y)
-    # debugger
     puts pixel
-    # red = ChunkyPNG::Color.r(pixel)
-    # puts red
-    #    green = ChunkyPNG::Color.g(pixel)
-    #    blue = ChunkyPNG::Color.b(pixel)
-    #    256 - (0.299 * red + 0.587 * green + 0.114 * blue)    
-    # 256 - (0.299 * ChunkyPNG::Color.r(pixel) + 0.587 * ChunkyPNG::Color.g(pixel) + 0.114 * ChunkyPNG::Color.b(pixel))
-    # gray = 30
-    grayscale_teint(pixel)
+    256 - grayscale_teint(pixel)
   end
 
   def halftone_data
@@ -31,7 +23,7 @@ module DotGen
   end
   
   def grid(width, height, origin = [0 , 0])
-    (origin[0]..width).to_a.product((origin[1]..height).to_a)
+    (origin[0]...width).to_a.product((origin[1]...height).to_a)
   end
 
   def make_and_save_dots(object, image_file)
@@ -48,6 +40,7 @@ module DotGen
     object.dot_file = File.open(file_name)
     object.save
     File.delete(file_name)
+    puts object.inspect
     object
   end
   

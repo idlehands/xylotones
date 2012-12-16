@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210053549) do
+ActiveRecord::Schema.define(:version => 20121215230225) do
 
   create_table "dots", :force => true do |t|
     t.integer  "xcoord"
