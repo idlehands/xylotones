@@ -1,4 +1,3 @@
-require 'csv'
 require 'net/http'
 require 'open-uri'
 
@@ -20,8 +19,7 @@ class XylotonesController < ApplicationController
 
   def show
     @xylotone = Xylotone.find(params[:id])
-    @dots = dots_from_url(@xylotone.dot_file.url)
-    # @dots = JSON.parse(data)
+    @dots = dots_from_url(@xylotone.dot_file.url).select {|dot| dot[4] == false}
   end
 
   def update

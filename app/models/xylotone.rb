@@ -9,12 +9,11 @@ class Xylotone < ActiveRecord::Base
   mount_uploader :original_image, OriginalImageUploader
   mount_uploader :dot_file, DotFileUploader
 
-  #validates :url, :original_image, :presence => true
+  validates :original_image, :presence => true
   #validates_uniqueness_of :url
 
   has_many :dots
 
-  #before_create :
   after_create :make_dots
 
   def make_dots

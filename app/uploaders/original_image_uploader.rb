@@ -73,14 +73,7 @@ class OriginalImageUploader < CarrierWave::Uploader::Base
       img
     end
   end
-  #process :make_dots
-  #
-  #def make_dots
-  #  puts "*********************"
-  #  puts self
-  #  #make_and_save_dots
-  #end
-
+  
   #def convert_and_scale
   #  :convert => 'png'
   #  :resize_to_fit => [500,500]
