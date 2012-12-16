@@ -1,11 +1,14 @@
+require 'net/http'
+require 'open-uri'
+
 class XylotonesController < ApplicationController
+  include DotGen
+
   def new
     @xylotone = Xylotone.new
   end
 
   def create
-    logger.info "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-    logger.info params.inspect
     @xylotone = Xylotone.new(params[:xylotone])
     if @xylotone.save
       redirect_to xylotone_path(@xylotone.id)
@@ -16,11 +19,13 @@ class XylotonesController < ApplicationController
 
   def show
     @xylotone = Xylotone.find(params[:id])
+    @dots = dots_from_url(@xylotone.dot_file.url).select {|dot| dot[4] == false}
   end
 
   def update
-    @dots = Dot.find params[:deleted_ids]
-    @dots.each(&:hide)
+    xylotone = Xylotone.find(params[:id])
+    deleted_dot_ids = params[:deleted_ids].map(&:to_i)
+    delete_dots(deleted_dot_ids, xylotone)
     render :json => { :success => true }
   end
 end
