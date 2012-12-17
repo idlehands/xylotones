@@ -17,7 +17,8 @@ To Do
 - ~~add mass selection tool to remove more dots at once~~
 - ~~push to heroku (xylotones.com)~~
 - ~~optimize conversion algorithm~~
-- rewrite testing
+- re-write and refine unit testing
+- add capybara integration testing
 - give each image a unique url
 - option to create image file from xylotone
 - add edit tools
