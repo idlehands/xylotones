@@ -18,6 +18,7 @@ To Do
 - ~~push to heroku (xylotones.com)~~
 - ~~optimize conversion algorithm~~
 - re-write and refine unit testing
+- refactor to more object oriented design according to tests
 - add capybara integration testing
 - give each image a unique url
 - option to create image file from xylotone
