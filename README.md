@@ -11,13 +11,16 @@ manipulated in the user's browser.
 Current optimization work is going on in the branch "refactor_update."
 
 To Do
-- ~write algorithm to analyze image and create dot information~
+- ~~write algorithm to analyze image and create dot information~~
 - ~~create basic user interface to select remove dots~~
 - ~~add ajax update to store which dots are deleted~~
 - ~~add mass selection tool to remove more dots at once~~
 - ~~push to heroku (xylotones.com)~~
-- optimize conversion algorithm
-- add user tools
+- ~~optimize conversion algorithm~~
+- rewrite testing
+- give each image a unique url
+- option to create image file from xylotone
+- add edit tools
 - add zoom to user viewport
 - tie in ability to purchase design on consumer products
 
