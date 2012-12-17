@@ -2,15 +2,20 @@
 	<div class="span8 offset1">
 		<h2>Xylotone maker - alpha</h2>
 		<p>
-          You can learn more about me at: <br />
-          <a href="http://github.com/1dlehands">github/1dlehands</a> or
-          <a href="http://linkedin.com/in/jeffreymatthias">LinkedIn</a> <br />
-			<p>Click on the dots to remove them. </br>
-			If you're not on mobile, you can drag to the lower right to mass select.</P
+			Thanks for checking this out. It is my side-project while learning at Dev Bootcamp.
+			Things are pretty early, so please be patient as things evolve. <br />
+			The code for this project is available at <a href="https://github.com/1dlehands/xylotones">this github repository</a>. <br />
+      You can learn more about me and my work at: <br />
+      <a href="http://github.com/1dlehands">github/1dlehands</a> or <br />
+      <a href="http://linkedin.com/in/jeffreymatthias">LinkedIn</a> <br />
+			or check out my side company: <br />
+			<a href="http://furnlab.com">furnlab.com</a>
+			<h4>Click on the dots to remove them. </h4>
+			If you're not on mobile, you can click and drag to the lower right to mass select.</P
 		</p>
 	</div>
 	<div class="span2 offset1">
-		<%=image_tag 'logo.png', {:id => "logo"} %>
+		<%=link_to (image_tag 'logo.png'),"http://furnlab.com", {:id => "logo"} %>	
 	</div>
 </div>
 
@@ -23,7 +28,7 @@
 		<button href="<%= xylotone_path(@xylotone)%>" method="put" id="save-image" data-image-id="<%= @xylotone.id %>">Save</button>
 	</div>
 	
-	<div class="span8" id="xylo-box">
+	<div class="span8 offset3" id="xylo-box">
 		<svg xmlns="http://www.w3.org/2000/svg" version="1.1"
 		       width="640px" height="480px" viewBox="0 0 640 480" xml:space="preserve" id="view-area" z-index="1">
 
