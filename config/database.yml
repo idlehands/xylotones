@@ -20,6 +20,9 @@ test:
   database: db/xylotones_test
   pool: 5
   timeout: 5000
+  host: localhost
+  username: postgres
+  password: 1974volks
 
 production:
   adapter: postgresql

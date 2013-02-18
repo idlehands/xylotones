@@ -13,3 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#Ignore Amazon AWS security creds
+/config/initializers/security_keys.rb
